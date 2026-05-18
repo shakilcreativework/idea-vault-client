@@ -1,9 +1,12 @@
+import Container from "@/components/shared/Container";
 
 
 export default function Home() {
   return (
     <div className="">
-      <h1>Welcome, idea vault</h1>
+      <Container>
+        <h1>Welcome, idea vault</h1>
+      </Container>
     </div>
   );
 }
