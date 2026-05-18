@@ -3,8 +3,15 @@
 import { useState } from "react";
 import Container from "./Container";
 import { FaMagic } from "react-icons/fa";
+import { IoClose, IoMenu, IoMoonSharp } from "react-icons/io5";
+import BaseButton from "../ui/BaseButton";
+import Link from "next/link";
 
 
+// ==========================================
+// Navbar Navigation Links
+// Central place for all nav menu items
+// ==========================================
 const navLinks = [
     {
         name: "Home",
@@ -29,22 +36,132 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+
+    // ==========================================
+    // State: Controls mobile menu open/close
+    // ==========================================
     const [open, setOpen] = useState(false);
 
-    // mobile menu toggle
+    // Toggle mobile menu
     const handleMenu = () => {
         setOpen(!open);
     };
 
     return (
-        <header className="sticky top-0 z-50 shadow-sm backdrop-blur-xl py-3">
-            <nav className="">
+        <header className="sticky top-0 z-50 shadow-sm bg-white/80 backdrop-blur-xl py-3">
+            <nav>
                 <Container>
-                    <div className="flex items-center gap-2">
-                        <div className=" flex justify-center items-center rounded-full w-10 h-10 bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]">
-                            <FaMagic className="text-white" />
+                    <div className="flex justify-between items-center">
+
+                        {/* ==========================================
+                           Logo Section
+                        ========================================== */}
+                        <Link href={"/"} className="flex items-center gap-2">
+                            <div className="flex justify-center items-center rounded-full w-10 h-10 bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]">
+                                <FaMagic className="text-white" />
+                            </div>
+
+                            <h3 className="font-bold text-lg text-[#091123]">
+                                Idea
+                                <span className="bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))] bg-clip-text text-transparent">
+                                    Vault
+                                </span>
+                            </h3>
+                        </Link>
+
+
+                        {/* ==========================================
+                           Desktop Navigation Menu
+                           Visible from md screen and above
+                        ========================================== */}
+                        <ul className="hidden md:flex items-center md:gap-5 lg:gap-8">
+                            {navLinks.map((item) => (
+                                <li
+                                    key={item.name}
+                                    className="font-medium text-sm text-[#c5c1b9] hover:text-[#091123] transition-all"
+                                >
+                                    <Link href={item.path}>
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+
+
+                        {/* ==========================================
+                           Mobile Navigation Menu
+                           Shows only when menu is open
+                        ========================================== */}
+                        <ul
+                            className={`${open ? "" : "hidden"} absolute bg-white left-0 w-full top-full flex flex-col md:hidden p-4 gap-5`}
+                        >
+                            {navLinks.map((item) => (
+                                <li
+                                    onClick={() => setOpen(false)}
+                                    key={item.name}
+                                    className="font-medium text-sm text-[#091123] transition-all"
+                                >
+                                    <Link href={item.path}>
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
+
+                            {/* Mobile Auth Buttons */}
+                            <div className="flex md:hidden justify-center items-center gap-3 lg:gap-4">
+                                <BaseButton
+                                    className={"bg-none text-[#091123] hover:bg-gray-200"}
+                                    size="sm"
+                                    text={"Login"}
+                                />
+
+                                <BaseButton
+                                    className={"bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"}
+                                    size="sm"
+                                    text={"Register"}
+                                />
+                            </div>
+                        </ul>
+
+
+                        {/* ==========================================
+                           Right Side Actions
+                           Theme + Auth Buttons + Mobile Menu
+                        ========================================== */}
+                        <div className="flex items-center gap-3 lg:gap-4">
+
+                            {/* Theme Toggle Icon */}
+                            <div>
+                                <IoMoonSharp className="text-xl" />
+                            </div>
+
+                            {/* Desktop Auth Buttons */}
+                            <div className="hidden md:flex items-center gap-3 lg:gap-4">
+                                <BaseButton
+                                    className={"bg-none text-[#091123] hover:bg-gray-200"}
+                                    size="sm"
+                                    text={"Login"}
+                                />
+
+                                <BaseButton
+                                    className={"bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"}
+                                    size="sm"
+                                    text={"Register"}
+                                />
+                            </div>
+
+                            {/* Mobile Menu Toggle Button */}
+                            <div
+                                onClick={handleMenu}
+                                className="w-10 h-10 hover:bg-gray-200 flex justify-center items-center rounded-full md:hidden"
+                            >
+                                {open ? (
+                                    <IoClose className="text-2xl" />
+                                ) : (
+                                    <IoMenu className="text-2xl" />
+                                )}
+                            </div>
                         </div>
-                        <h3 className="font-bold text-lg text-[#091123]">Idea<span>Vault</span></h3>
                     </div>
                 </Container>
             </nav>
