@@ -48,7 +48,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 shadow-sm bg-white/80 backdrop-blur-xl py-3">
+        <header className="sticky top-0 z-50 shadow-sm bg-white/10 backdrop-blur-md py-3">
             <nav>
                 <Container>
                     <div className="flex justify-between items-center">
@@ -67,7 +67,7 @@ const Navbar = () => {
                             {navLinks.map((item) => (
                                 <li
                                     key={item.name}
-                                    className="font-medium text-sm text-[#c5c1b9] hover:text-[#091123] transition-all"
+                                    className="font-medium text-sm text-[#5b6375] hover:text-[#091123] transition-all"
                                 >
                                     <Link href={item.path}>
                                         {item.name}
