@@ -93,7 +93,15 @@ const Navbar = () => {
                            Shows only when menu is open
                         ========================================== */}
                         <ul
-                            className={`${open ? "" : "hidden"} absolute bg-white left-0 w-full top-full flex flex-col md:hidden p-4 gap-5`}
+                            className={`
+                                    absolute left-0 top-full w-full bg-white
+                                    flex flex-col gap-5 p-4 md:hidden
+                                    transition-all duration-300 ease-in-out
+                                    ${open
+                                    ? "opacity-100 translate-y-0 visible"
+                                    : "opacity-0 -translate-y-3 invisible pointer-events-none"
+                                }
+                            `}
                         >
                             {navLinks.map((item) => (
                                 <li
