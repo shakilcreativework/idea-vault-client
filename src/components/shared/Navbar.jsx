@@ -118,7 +118,7 @@ const Navbar = () => {
                             {/* Mobile Auth Buttons */}
                             <div className="flex md:hidden justify-center items-center gap-3 lg:gap-4">
                                 <BaseButton
-                                    className={"bg-none text-[#091123] hover:bg-gray-200"}
+                                    className={"bg-gray-200 text-[#091123]"}
                                     size="sm"
                                     text={"Login"}
                                 />
