@@ -110,12 +110,14 @@ const Navbar = () => {
                                     className={"bg-gray-200 text-[#091123]"}
                                     size="sm"
                                     text={"Login"}
+                                    as="link" href={'/login'}
                                 />
 
                                 <BaseButton
                                     className={"bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"}
                                     size="sm"
                                     text={"Register"}
+                                    as="link" href={'/register'}
                                 />
                             </div>
                         </ul>
@@ -138,12 +140,14 @@ const Navbar = () => {
                                     className={"bg-none text-[#091123] hover:bg-gray-200"}
                                     size="sm"
                                     text={"Login"}
+                                    as="link" href={'/login'}
                                 />
 
                                 <BaseButton
                                     className={"bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"}
                                     size="sm"
                                     text={"Register"}
+                                    as="link" href={'/register'}
                                 />
                             </div>
 
