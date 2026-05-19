@@ -1,11 +1,14 @@
+import ShareStartupIdea from "@/components/sections/ShareStartupIdea";
 import Container from "@/components/shared/Container";
-
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="py-14">
       <Container>
-        <h1>Welcome, idea vault</h1>
+        {/* section Why share your startup idea? */}
+        <section>
+          <ShareStartupIdea />
+        </section>
       </Container>
     </div>
   );
