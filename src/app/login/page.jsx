@@ -24,12 +24,13 @@ const SignInPage = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        console.log(formData);
+        const userData = Object.fromEntries(formData.entries());
+        console.log(userData);
     };
 
     // google signup and login
     const handleGoogleSignIn = async () => {
-
+        console.log('clicked google btn');
     };
 
     return (
@@ -95,6 +96,7 @@ const SignInPage = () => {
 
                             {/* Google Button */}
                             <Button
+                                onClick={handleGoogleSignIn}
                                 type="button"
                                 className="w-full py-3 rounded-2xl font-medium 
                                 bg-[linear-gradient(135deg,oklch(0.97_0.03_280),oklch(0.97_0.04_220))] text-[#6B7280] border border-gray-200 
