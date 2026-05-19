@@ -10,7 +10,7 @@ const Logo = () => {
                     <FaMagic className="text-white" />
                 </div>
 
-                <h3 className="font-bold text-lg text-[#091123]">
+                <h3 className="font-bold plus-jakarta text-lg text-[#091123]">
                     Idea
                     <span className="bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))] bg-clip-text text-transparent">
                         Vault
