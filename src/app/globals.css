@@ -4,6 +4,20 @@
 @import "@heroui/styles";
 
 /* custom css */
+
+body {
+  color: #5b6375;
+}
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #091123;
+} */
+
 .plus-jakarta {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-optical-sizing: auto;
