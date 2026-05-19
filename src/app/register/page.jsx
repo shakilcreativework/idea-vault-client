@@ -16,6 +16,9 @@ import Image from "next/image";
 import Container from "@/components/shared/Container";
 import { useRouter } from "next/navigation";
 import { FaMagic } from "react-icons/fa";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+import { error } from "better-auth/api";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -23,15 +26,46 @@ const SignUpPage = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const userData = Object.fromEntries(formData.entries());
-    console.log(userData);
+    setLoading(true);
 
+    try {
+      const formData = new FormData(e.currentTarget);
+      const userData = Object.fromEntries(formData.entries());
+      console.log(userData);
+
+      // signup with email and password
+      const { data, error } = await authClient.signUp.email({
+        ...userData,
+      });
+
+      console.log("data", data, 'error', error);
+
+      if(error){
+        toast.error(error.message || 'signup failed!');
+        return;
+      }
+
+      toast.success("Account created successfully!");
+
+      router.push("/login");
+    } catch {
+      toast.error("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   // ✅ Google login (clean & correct)
   const handleGoogleSignIn = async () => {
-    console.log('clicked google btn');
+    try{
+      const data = await authClient.signIn.social({
+        provider: "google",
+      });
+      console.log(data);
+
+    }catch{
+      toast.error(error.message || "Google Signup failed!");
+    }
   };
 
   return (

@@ -6,6 +6,8 @@ import { IoClose, IoMenu, IoMoonSharp } from "react-icons/io5";
 import BaseButton from "../ui/BaseButton";
 import Link from "next/link";
 import Logo from "../ui/Logo";
+import { authClient } from "@/lib/auth-client";
+import { Avatar } from "@heroui/react";
 
 
 // ==========================================
@@ -36,6 +38,8 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+    const { data: session, error } = authClient.useSession();
+    console.log(session);
 
     // ==========================================
     // State: Controls mobile menu open/close
@@ -135,21 +139,36 @@ const Navbar = () => {
                             </div>
 
                             {/* Desktop Auth Buttons */}
-                            <div className="hidden md:flex items-center gap-3 lg:gap-4">
-                                <BaseButton
-                                    className={"bg-none text-[#091123] hover:bg-gray-200"}
-                                    size="sm"
-                                    text={"Login"}
-                                    as="link" href={'/login'}
-                                />
+                            {
+                                session?.user ?
+                                    <div>
+                                        <div className="flex items-center gap-2">
+                                            <Avatar>
+                                                <Avatar.Image alt="John Doe" src={session?.user?.image || "https://img.heroui.chat/image/avatar?w=400&h=400&u=3"} />
+                                                <Avatar.Fallback>
+                                                    {session?.user?.name?.slice(0, 2).toUpperCase() || "U"}
+                                                </Avatar.Fallback>
+                                            </Avatar>
+                                            {/* <span className=""><IoIosArrowDown /></span> */}
+                                        </div>
+                                    </div>
+                                    :
+                                    <div className="hidden md:flex items-center gap-3 lg:gap-4">
+                                        <BaseButton
+                                            className={"bg-none text-[#091123] hover:bg-gray-200"}
+                                            size="sm"
+                                            text={"Login"}
+                                            as="link" href={'/login'}
+                                        />
 
-                                <BaseButton
-                                    className={"bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"}
-                                    size="sm"
-                                    text={"Register"}
-                                    as="link" href={'/register'}
-                                />
-                            </div>
+                                        <BaseButton
+                                            className={"bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"}
+                                            size="sm"
+                                            text={"Register"}
+                                            as="link" href={'/register'}
+                                        />
+                                    </div>
+                            }
 
                             {/* Mobile Menu Toggle Button */}
                             <div
