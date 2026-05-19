@@ -6,7 +6,7 @@ import { GoRocket } from "react-icons/go";
 
 const ShareStartupIdea = () => {
     return (
-        <div>
+        <div className="py-20">
             <div className="space-y-3 text-center">
                 <SectionTitle text={'Why share your startup idea?'} />
                 <p className="text-sm md:text-base text-[#5b6375]">The best founders test ideas in the open. IdeaVault gives you the audience, the tools, <br className="hidden md:block" /> and the community to do it well.</p>
