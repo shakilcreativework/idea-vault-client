@@ -55,7 +55,7 @@ const SignUpPage = () => {
     }
   };
 
-  // ✅ Google login (clean & correct)
+  // google signup and login
   const handleGoogleSignIn = async () => {
     try{
       const data = await authClient.signIn.social({

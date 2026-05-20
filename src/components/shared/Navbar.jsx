@@ -8,6 +8,7 @@ import Link from "next/link";
 import Logo from "../ui/Logo";
 import { authClient } from "@/lib/auth-client";
 import { Avatar } from "@heroui/react";
+import { CustomTrigger } from "../ui/CustomTrigger";
 
 
 // ==========================================
@@ -39,7 +40,7 @@ const navLinks = [
 
 const Navbar = () => {
     const { data: session, error } = authClient.useSession();
-    console.log(session);
+    // console.log(session);
 
     // ==========================================
     // State: Controls mobile menu open/close
@@ -143,12 +144,14 @@ const Navbar = () => {
                                 session?.user ?
                                     <div>
                                         <div className="flex items-center gap-2">
-                                            <Avatar>
+                                            <CustomTrigger />
+
+                                            {/* <Avatar>
                                                 <Avatar.Image alt="John Doe" src={session?.user?.image || "https://img.heroui.chat/image/avatar?w=400&h=400&u=3"} />
                                                 <Avatar.Fallback>
                                                     {session?.user?.name?.slice(0, 2).toUpperCase() || "U"}
                                                 </Avatar.Fallback>
-                                            </Avatar>
+                                            </Avatar> */}
                                             {/* <span className=""><IoIosArrowDown /></span> */}
                                         </div>
                                     </div>

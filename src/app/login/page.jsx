@@ -16,6 +16,8 @@ import Link from "next/link";
 import { IoIosSunny } from "react-icons/io";
 import Image from "next/image";
 import { FaMagic } from "react-icons/fa";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const SignInPage = () => {
     const [loading, setLoading] = useState(false);
@@ -23,14 +25,44 @@ const SignInPage = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const userData = Object.fromEntries(formData.entries());
-        console.log(userData);
+        setLoading(true);
+
+        try {
+            const formData = Object.fromEntries(
+                new FormData(e.currentTarget)
+            );
+            // console.log(formData);
+
+            const { data, error } = await authClient.signIn.email({
+                ...formData
+            });
+            console.log(data, error);
+
+            if (error) {
+                toast.error(error.message || "Account login failed!");
+                return;
+            }
+
+            toast.success("Account login successfully!");
+            router.push("/");
+        } catch {
+            toast.error('Something went wrong!');
+        } finally {
+            setLoading(false);
+        }
     };
 
     // google signup and login
     const handleGoogleSignIn = async () => {
-        console.log('clicked google btn');
+        try {
+            const data = await authClient.signIn.social({
+                provider: "google",
+            });
+            console.log(data);
+
+        } catch {
+            toast.error(error.message || "Google Login failed!");
+        }
     };
 
     return (
