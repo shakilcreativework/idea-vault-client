@@ -1,0 +1,122 @@
+[
+  {
+    "ideaTitle": "AI Study Planner for Students",
+    "shortDescription": "An AI-powered planner that creates smart study routines.",
+    "detailedDescription": "This platform helps students organize study schedules using AI-generated plans based on exams, deadlines, and learning pace.",
+    "category": "AI",
+    "tags": ["ai", "education", "students"],
+    "imageURL": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    "estimatedBudget": "$15K MVP",
+    "targetAudience": "School and university students",
+    "problemStatement": "Students struggle with time management and study consistency.",
+    "proposedSolution": "Use AI to automatically create personalized study routines and reminders."
+  },
+  {
+    "ideaTitle": "Smart Health Tracker",
+    "shortDescription": "Track daily health habits with predictive insights.",
+    "detailedDescription": "Users can monitor sleep, hydration, exercise, and receive health recommendations using machine learning.",
+    "category": "Health",
+    "tags": ["health", "fitness", "tracker"],
+    "imageURL": "https://images.unsplash.com/photo-1518611012118-696072aa579a",
+    "estimatedBudget": "$30K MVP",
+    "targetAudience": "Health-conscious adults",
+    "problemStatement": "People often fail to maintain healthy routines consistently.",
+    "proposedSolution": "Provide personalized health tracking with actionable insights and reminders."
+  },
+  {
+    "ideaTitle": "Remote Team Collaboration Hub",
+    "shortDescription": "A collaboration platform built for remote startup teams.",
+    "detailedDescription": "This app combines tasks, brainstorming, file sharing, and async communication into one productivity workspace.",
+    "category": "Tech",
+    "tags": ["remote", "startup", "productivity"],
+    "imageURL": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+    "estimatedBudget": "$50K MVP",
+    "targetAudience": "Remote startup teams",
+    "problemStatement": "Remote teams use too many disconnected tools.",
+    "proposedSolution": "Centralize communication and workflow in one collaborative workspace."
+  },
+  {
+    "ideaTitle": "Eco-Friendly Delivery Network",
+    "shortDescription": "A green logistics platform using electric vehicles.",
+    "detailedDescription": "Businesses can use eco-friendly delivery systems powered by EV bikes and route optimization AI.",
+    "category": "Green Energy",
+    "tags": ["green", "delivery", "ev"],
+    "imageURL": "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
+    "estimatedBudget": "$80K MVP",
+    "targetAudience": "Local businesses and delivery startups",
+    "problemStatement": "Traditional delivery systems increase pollution.",
+    "proposedSolution": "Use electric delivery vehicles and optimized routes to reduce emissions."
+  },
+  {
+    "ideaTitle": "Virtual AI Interview Coach",
+    "shortDescription": "Practice job interviews with an AI interviewer.",
+    "detailedDescription": "The platform simulates technical and HR interviews while giving feedback on communication and confidence.",
+    "category": "Education",
+    "tags": ["career", "ai", "interview"],
+    "imageURL": "https://images.unsplash.com/photo-1552664730-d307ca884978",
+    "estimatedBudget": "$20K MVP",
+    "targetAudience": "Job seekers and graduates",
+    "problemStatement": "Many candidates lack interview preparation experience.",
+    "proposedSolution": "Provide realistic AI-based interview simulations with detailed feedback."
+  },
+  {
+    "ideaTitle": "AI Content Idea Generator",
+    "shortDescription": "Generate viral content ideas for creators instantly.",
+    "detailedDescription": "Creators can generate YouTube, TikTok, and Instagram content ideas based on trends and audience interests.",
+    "category": "AI",
+    "tags": ["content", "social media", "creator"],
+    "imageURL": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    "estimatedBudget": "$18K MVP",
+    "targetAudience": "Content creators and influencers",
+    "problemStatement": "Creators often struggle with creative burnout.",
+    "proposedSolution": "Use AI trend analysis to generate engaging content ideas automatically."
+  },
+  {
+    "ideaTitle": "Digital Mental Wellness App",
+    "shortDescription": "Daily mental wellness support through guided activities.",
+    "detailedDescription": "The app provides mood tracking, breathing exercises, journaling, and AI wellness suggestions.",
+    "category": "Health",
+    "tags": ["mental health", "wellness", "mindfulness"],
+    "imageURL": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+    "estimatedBudget": "$25K MVP",
+    "targetAudience": "Young adults and professionals",
+    "problemStatement": "Stress and anxiety are increasing among young professionals.",
+    "proposedSolution": "Offer accessible mental wellness tools and daily emotional support."
+  },
+  {
+    "ideaTitle": "FinTech Budgeting Assistant",
+    "shortDescription": "Smart budgeting app for personal finance management.",
+    "detailedDescription": "Users can manage expenses, track savings goals, and receive AI budgeting advice.",
+    "category": "FinTech",
+    "tags": ["finance", "budget", "money"],
+    "imageURL": "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
+    "estimatedBudget": "$40K MVP",
+    "targetAudience": "Young professionals and students",
+    "problemStatement": "People struggle to manage spending and savings effectively.",
+    "proposedSolution": "Provide automated expense tracking and personalized savings strategies."
+  },
+  {
+    "ideaTitle": "Online Skill Exchange Marketplace",
+    "shortDescription": "Exchange skills instead of paying money.",
+    "detailedDescription": "Users can trade services like coding, design, language teaching, and marketing through a barter-based system.",
+    "category": "Education",
+    "tags": ["skills", "marketplace", "community"],
+    "imageURL": "https://images.unsplash.com/photo-1522202222206-b750f0f7e1f2",
+    "estimatedBudget": "$22K MVP",
+    "targetAudience": "Freelancers and learners",
+    "problemStatement": "Many talented people cannot afford premium learning resources.",
+    "proposedSolution": "Allow users to exchange skills and services without direct payment."
+  },
+  {
+    "ideaTitle": "Smart Agriculture Monitoring System",
+    "shortDescription": "IoT-based crop monitoring for modern farming.",
+    "detailedDescription": "Farmers can monitor soil quality, irrigation, and crop health using sensors and analytics.",
+    "category": "Tech",
+    "tags": ["agriculture", "iot", "farming"],
+    "imageURL": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854",
+    "estimatedBudget": "$60K MVP",
+    "targetAudience": "Farmers and agricultural businesses",
+    "problemStatement": "Farmers often lack real-time insights about crop conditions.",
+    "proposedSolution": "Use IoT sensors and analytics to improve farming efficiency and crop yield."
+  }
+]

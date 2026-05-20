@@ -43,7 +43,7 @@ const navLinks = [
 
 const Navbar = () => {
     const { data: session, error } = authClient.useSession();
-    // console.log(session);
+    console.log('error', error);
 
     // Show private links only for logged in users
     const filteredLinks = navLinks.filter((item) => {
