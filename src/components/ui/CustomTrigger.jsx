@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export function CustomTrigger() {
     const { data: session, error } = authClient.useSession();
     const router = useRouter();
-    console.log(session);
+    // console.log(session);
     const logOut = async () => {
         await authClient.signOut({
             fetchOptions: {
