@@ -257,9 +257,7 @@ const AddIdeaPage = () => {
 
                 <Input
                   placeholder="AI Study Planner for Students"
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
@@ -324,9 +322,6 @@ const AddIdeaPage = () => {
 
               <Input
                 placeholder="$15K MVP"
-                className={{
-                  inputWrapper: "rounded-md",
-                }}
               />
 
               <FieldError />
@@ -341,9 +336,7 @@ const AddIdeaPage = () => {
 
                 <Input
                   placeholder="Students, freelancers, startup founders"
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
@@ -359,9 +352,7 @@ const AddIdeaPage = () => {
 
                 <Input
                   placeholder="ai, productivity, students"
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
@@ -378,9 +369,7 @@ const AddIdeaPage = () => {
                 <Input
                   type="url"
                   placeholder="https://example.com/image.jpg"
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
@@ -396,9 +385,7 @@ const AddIdeaPage = () => {
 
                 <TextArea
                   placeholder="Write a short summary about your startup idea..."
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
@@ -414,9 +401,7 @@ const AddIdeaPage = () => {
 
                 <TextArea
                   placeholder="Explain your startup idea in detail..."
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
@@ -432,9 +417,7 @@ const AddIdeaPage = () => {
 
                 <TextArea
                   placeholder="What problem are you trying to solve?"
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
@@ -450,9 +433,7 @@ const AddIdeaPage = () => {
 
                 <TextArea
                   placeholder="Describe your solution..."
-                  className={{
-                    inputWrapper: "rounded-md",
-                  }}
+                  
                 />
 
                 <FieldError />
