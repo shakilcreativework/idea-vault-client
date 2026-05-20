@@ -46,10 +46,13 @@ export function CustomTrigger() {
                     </div>
                 </div>
                 <Dropdown.Menu>
-                    <Dropdown.Item id="profile" textValue="Profile">
-                        <Link href={'/profile'}>
-                            <Label>Profile</Label>
-                        </Link>
+                    <Dropdown.Item
+                        id="profile"
+                        textValue="Profile"
+                        as={Link}
+                        href="/profile"
+                    >
+                        <Label>Profile</Label>
                     </Dropdown.Item>
                     <Dropdown.Item id="logout" textValue="Logout" variant="danger">
                         <div onClick={logOut} className="flex w-full items-center justify-between gap-2">
