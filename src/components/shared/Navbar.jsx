@@ -7,7 +7,6 @@ import BaseButton from "../ui/BaseButton";
 import Link from "next/link";
 import Logo from "../ui/Logo";
 import { authClient } from "@/lib/auth-client";
-import { Avatar } from "@heroui/react";
 import { CustomTrigger } from "../ui/CustomTrigger";
 
 
@@ -110,12 +109,15 @@ const Navbar = () => {
                             ))}
 
                             {/* Mobile Auth Buttons */}
+                            {!session?.user && 
+                            
                             <div className="flex md:hidden justify-center items-center gap-3 lg:gap-4">
                                 <BaseButton
                                     className={"bg-gray-200 text-[#091123]"}
                                     size="sm"
                                     text={"Login"}
                                     as="link" href={'/login'}
+                                    onClick={() => {setOpen(false)}}
                                 />
 
                                 <BaseButton
@@ -123,8 +125,10 @@ const Navbar = () => {
                                     size="sm"
                                     text={"Register"}
                                     as="link" href={'/register'}
+                                    onClick={() => {setOpen(false)}}
                                 />
                             </div>
+                            }
                         </ul>
 
 
@@ -145,14 +149,6 @@ const Navbar = () => {
                                     <div>
                                         <div className="flex items-center gap-2">
                                             <CustomTrigger />
-
-                                            {/* <Avatar>
-                                                <Avatar.Image alt="John Doe" src={session?.user?.image || "https://img.heroui.chat/image/avatar?w=400&h=400&u=3"} />
-                                                <Avatar.Fallback>
-                                                    {session?.user?.name?.slice(0, 2).toUpperCase() || "U"}
-                                                </Avatar.Fallback>
-                                            </Avatar> */}
-                                            {/* <span className=""><IoIosArrowDown /></span> */}
                                         </div>
                                     </div>
                                     :

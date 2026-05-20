@@ -11,7 +11,6 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
-import { IoIosSunny } from "react-icons/io";
 import Image from "next/image";
 import Container from "@/components/shared/Container";
 import { useRouter } from "next/navigation";
