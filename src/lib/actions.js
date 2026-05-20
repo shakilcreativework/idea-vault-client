@@ -21,3 +21,21 @@ export const getPlatform = () => {
 
   return platform;
 };
+
+// ideas data
+export const getIdeasData = async() => {
+  const res = await fetch('http://localhost:5000/add-ideas');
+  return res.json();
+};
+
+// single idea
+export const getSingleIdeaData = async(id) => {
+  const res = await fetch(
+    `http://localhost:5000/add-ideas/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  return res.json();
+};

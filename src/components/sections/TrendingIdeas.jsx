@@ -4,9 +4,13 @@ import SectionTitle from "../ui/SectionTitle";
 import SectionBadge from "../ui/SectionBadge";
 import { BsStars } from "react-icons/bs";
 import IdeaCard from "../ui/IdeaCard";
+import { getIdeasData } from "@/lib/actions";
 
 
-const TrendingIdeas = () => {
+const TrendingIdeas = async() => {
+    const ideasData = await getIdeasData();
+    console.log(ideasData);
+
     return (
         <div className="py-20">
             <div className="space-y-3">
@@ -18,12 +22,9 @@ const TrendingIdeas = () => {
             </div>
             {/* trending cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-5 lg:gap-6 mt-10">
-                <IdeaCard />
-                <IdeaCard />
-                <IdeaCard />
-                <IdeaCard />
-                <IdeaCard />
-                <IdeaCard />
+                {
+                    ideasData.map(ideaInfo => <IdeaCard key={ideaInfo._id} ideaInfo={ideaInfo} />)
+                }
             </div>
         </div>
     );

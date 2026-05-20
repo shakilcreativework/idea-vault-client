@@ -5,6 +5,7 @@ import Container from "@/components/shared/Container";
 import SectionBadge from "@/components/ui/SectionBadge";
 import SectionParagraph from "@/components/ui/SectionParagraph";
 import SectionTitle from "@/components/ui/SectionTitle";
+import { authClient } from "@/lib/auth-client";
 
 import {
   Button,
@@ -21,6 +22,8 @@ import {
 import { WiStars } from "react-icons/wi";
 
 const AddIdeaPage = () => {
+  const { data: session, error } = authClient.useSession();
+  // console.log(session?.user?.email);
 
   // ==========================================
   // Handle Form Submit
@@ -36,7 +39,26 @@ const AddIdeaPage = () => {
     .split(',')
     .map(tag => tag.trim())
     .filter(tag => tag !== "");
-    console.log(ideaData);
+
+    // idea data with user information
+    const addIdeaData = {
+      ...ideaData,
+      userEmail: session?.user?.email,
+      userName: session?.user?.name,
+      userImage: session?.user?.image,
+    }
+    // console.log(addIdeaData);
+
+    const res = await fetch('http://localhost:5000/add-ideas', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(addIdeaData)
+    });
+
+    const data = await res.json();
+    console.log('data', data, typeof data);
   };
 
   return (
@@ -108,31 +130,31 @@ const AddIdeaPage = () => {
 
                 <Select.Popover>
                   <ListBox>
-                    <ListBox.Item id="AI">
+                    <ListBox.Item id="AI" textValue="AI">
                       AI
                     </ListBox.Item>
 
-                    <ListBox.Item id="Tech">
+                    <ListBox.Item id="Tech" textValue="Tech">
                       Tech
                     </ListBox.Item>
 
-                    <ListBox.Item id="Education">
+                    <ListBox.Item id="Education" textValue="Education">
                       Education
                     </ListBox.Item>
 
-                    <ListBox.Item id="Health">
+                    <ListBox.Item id="Health" textValue="Health">
                       Health
                     </ListBox.Item>
 
-                    <ListBox.Item id="FinTech">
+                    <ListBox.Item id="FinTech" textValue="FinTech">
                       FinTech
                     </ListBox.Item>
 
-                    <ListBox.Item id="Green Energy">
+                    <ListBox.Item id="Green Energy" textValue="Green Energy">
                       Green Energy
                     </ListBox.Item>
 
-                    <ListBox.Item id="E-Commerce">
+                    <ListBox.Item id="E-Commerce" textValue="E-Commerce">
                       E-Commerce
                     </ListBox.Item>
                   </ListBox>
