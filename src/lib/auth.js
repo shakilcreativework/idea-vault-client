@@ -7,7 +7,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
 const client = new MongoClient(process.env.MONGODB_URI);
 console.log(client);
-const db = client.db("idea_vault");
+const db = client.db("ideavaultDB");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {

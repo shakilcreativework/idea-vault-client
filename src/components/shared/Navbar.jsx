@@ -26,20 +26,34 @@ const navLinks = [
     {
         name: "Add Idea",
         path: "/add-idea",
+        private: true,
     },
     {
         name: "My Ideas",
         path: "/my-ideas",
+        private: true,
     },
     {
         name: "My Interactions",
         path: "/my-interactions",
+        private: true,
     },
 ];
+
 
 const Navbar = () => {
     const { data: session, error } = authClient.useSession();
     // console.log(session);
+
+    // Show private links only for logged in users
+    const filteredLinks = navLinks.filter((item) => {
+        if (item.private && !session?.user) {
+            return false;
+        }
+    
+        return true;
+    });
+    console.log(filteredLinks);
 
     // ==========================================
     // State: Controls mobile menu open/close
@@ -68,7 +82,7 @@ const Navbar = () => {
                            Visible from md screen and above
                         ========================================== */}
                         <ul className="hidden md:flex items-center md:gap-5 lg:gap-8">
-                            {navLinks.map((item) => (
+                            {filteredLinks.map((item) => (
                                 <li
                                     key={item.name}
                                     className="font-medium text-sm text-[#5b6375] hover:text-[#091123] transition-all"
@@ -96,7 +110,7 @@ const Navbar = () => {
                                 }
                             `}
                         >
-                            {navLinks.map((item) => (
+                            {filteredLinks.map((item) => (
                                 <li
                                     onClick={() => setOpen(false)}
                                     key={item.name}

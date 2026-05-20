@@ -20,7 +20,10 @@ const IdeaCard = () => {
                 <div className="flex items-center gap-2 justify-between mt-4">
                     <div className="flex items-center gap-2">
                         <Avatar>
-                            <Avatar.Image alt="John Doe" src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3" />
+                            <Avatar.Image
+                                referrerPolicy="no-referrer"
+                                alt="John Doe"
+                                src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3" />
                             <Avatar.Fallback>JD</Avatar.Fallback>
                         </Avatar>
                         <span className="text-sm">Md Jakir Hossain</span>

@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export function CustomTrigger() {
     const { data: session, error } = authClient.useSession();
     const router = useRouter();
-    // console.log(session);
+    console.log(session);
     const logOut = async () => {
         await authClient.signOut({
             fetchOptions: {
@@ -23,6 +23,7 @@ export function CustomTrigger() {
             <Dropdown.Trigger className="rounded-full">
                 <Avatar>
                     <Avatar.Image
+                        referrerPolicy="no-referrer"
                         alt={session?.user?.name || "User Name"}
                         src={session?.user?.image || "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"}
                     />
@@ -34,6 +35,7 @@ export function CustomTrigger() {
                     <div className="flex items-center gap-2">
                         <Avatar size="sm">
                             <Avatar.Image
+                                referrerPolicy="no-referrer"
                                 alt={session?.user?.name || "User Name"}
                                 src={session?.user?.image || "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"}
                             />
