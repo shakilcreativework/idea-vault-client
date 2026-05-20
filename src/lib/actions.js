@@ -39,3 +39,13 @@ export const getSingleIdeaData = async(id) => {
 
   return res.json();
 };
+
+// Get ideas created by logged-in user
+export const getUserData = async(email) => {
+  const res = await fetch(`http://localhost:5000/add-ideas?email=${email}`, {
+    cache: "no-store",
+  });
+  
+  const data = await res.json();
+  return data;
+};
