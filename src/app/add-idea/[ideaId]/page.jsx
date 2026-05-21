@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 
 import {
-  MdCategory,
   MdOutlineTipsAndUpdates,
 } from "react-icons/md";
 import { LuTag } from "react-icons/lu";
@@ -49,8 +48,6 @@ const IdeaDetailPage = async ({ params }) => {
     userName,
     userImage,
   } = ideaDetail;
-
-  console.log(_id);
 
   return (
     <section className="py-14 md:py-20 bg-[#F8FAFD] min-h-dvh">
@@ -140,8 +137,9 @@ const IdeaDetailPage = async ({ params }) => {
               <SectionBadge icon={<TbMessageDots className="text-lg" />} text={'Add Comment'} />
 
               <div>
-                <CommentForm ideaId={_id} />
+                <CommentForm ideaId={_id} ideaTitle={ideaTitle} />
               </div>
+
             </div>
 
             {/* ==========================================

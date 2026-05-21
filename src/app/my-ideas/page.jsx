@@ -53,7 +53,7 @@ const MyIdeasPage = () => {
                         />
                     </div>
                 </div>
-                <div className="space-y-5">
+                <div className="space-y-3">
                     {
                         idea.map((ideaInfo, index) => ideaInfo.userEmail === session?.user?.email ?
                             <div

@@ -12,7 +12,7 @@ import {
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 
-const CommentForm = ({ ideaId }) => {
+const CommentForm = ({ ideaId, ideaTitle }) => {
 
   const { data: session } = authClient.useSession();
 
@@ -28,6 +28,7 @@ const CommentForm = ({ ideaId }) => {
 
     const commentData = {
       ideaId,
+      ideaTitle,
       comment: commentText,
 
       userName: session?.user?.name,
