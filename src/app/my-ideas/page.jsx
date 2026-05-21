@@ -13,6 +13,7 @@ import BaseButton from "@/components/ui/BaseButton";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
+import { UpdateModal } from "@/components/ui/UpdateModal";
 
 
 const MyIdeasPage = () => {
@@ -31,7 +32,7 @@ const MyIdeasPage = () => {
         }
     }, [session]);
 
-    console.log(idea);
+    // console.log(idea);
 
     return (
 
@@ -129,6 +130,28 @@ const MyIdeasPage = () => {
                                 ========================================== */}
                                 <div className="flex items-center gap-3 flex-wrap">
 
+                                    {/* <BaseButton
+                                        className={"bg-[#D4F4FF] text-[#082047]"}
+                                        size="sm"
+                                        leftIcon={
+                                            <MdOutlineModeEditOutline className="text-lg" />
+                                        }
+                                        text={"Edit"}
+                                    /> */}
+                                    <UpdateModal ideaInfo={ideaInfo}  />
+
+                                    <BaseButton
+                                        className={"bg-[#FFE2E2] text-[#082047]"}
+                                        size="sm"
+                                        leftIcon={
+                                            <AiOutlineDelete className="text-red-500 text-lg" />
+                                        }
+                                        text={"Delete"}
+                                    />
+                                </div>
+
+                                {/* <div className="flex items-center gap-3 flex-wrap">
+
                                     <BaseButton
                                         className={"bg-[#D4F4FF] text-[#082047]"}
                                         size="sm"
@@ -146,7 +169,7 @@ const MyIdeasPage = () => {
                                         }
                                         text={"Delete"}
                                     />
-                                </div>
+                                </div> */}
 
                             </div>
                             :
