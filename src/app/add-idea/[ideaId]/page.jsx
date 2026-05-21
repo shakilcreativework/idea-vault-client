@@ -14,6 +14,9 @@ import {
   MdOutlineTipsAndUpdates,
 } from "react-icons/md";
 import { LuTag } from "react-icons/lu";
+import SectionBadge from "@/components/ui/SectionBadge";
+import { TbMessageDots } from "react-icons/tb";
+import CommentForm from "@/components/ui/CommentForm";
 
 const IdeaDetailPage = async ({ params }) => {
 
@@ -31,6 +34,7 @@ const IdeaDetailPage = async ({ params }) => {
   // Destructure Idea Data
   // ==========================================
   const {
+    _id,
     ideaTitle,
     category,
     estimatedBudget,
@@ -45,6 +49,8 @@ const IdeaDetailPage = async ({ params }) => {
     userName,
     userImage,
   } = ideaDetail;
+
+  console.log(_id);
 
   return (
     <section className="py-14 md:py-20 bg-[#F8FAFD] min-h-dvh">
@@ -68,12 +74,12 @@ const IdeaDetailPage = async ({ params }) => {
 
               <div className="relative h-65 md:h-105 w-full">
                 <Image
-                src={imageURL}
-                alt={ideaTitle}
-                priority
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
-                className="object-cover"
+                  src={imageURL}
+                  alt={ideaTitle}
+                  priority
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                  className="object-cover"
                 />
               </div>
 
@@ -122,6 +128,19 @@ const IdeaDetailPage = async ({ params }) => {
                   ))}
                 </div>
 
+              </div>
+            </div>
+
+
+
+            {/* ==========================================
+                comment
+            ========================================== */}
+            <div className="bg-white rounded-3xl shadow-md p-6 md:p-8 space-y-5">
+              <SectionBadge icon={<TbMessageDots className="text-lg" />} text={'Add Comment'} />
+
+              <div>
+                <CommentForm ideaId={_id} />
               </div>
             </div>
 
@@ -193,8 +212,8 @@ const IdeaDetailPage = async ({ params }) => {
                 {/* User Image */}
                 <div className="relative w-16 h-16 rounded-full overflow-hidden">
                   <Image
-                  width={80}
-                  height={80}
+                    width={80}
+                    height={80}
                     src={userImage}
                     alt={userName}
                     className="w-full h-full object-cover"

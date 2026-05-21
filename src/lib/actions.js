@@ -40,6 +40,12 @@ export const getSingleIdeaData = async(id) => {
   return res.json();
 };
 
+// Get comments
+export const getCommentData = async() => {
+  const res = await fetch('http://localhost:5000/comments');
+  return res.json();
+};
+
 // Get ideas created by logged-in user
 export const getUserData = async (email) => {
 
