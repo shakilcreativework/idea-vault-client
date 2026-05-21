@@ -12,14 +12,14 @@ import { TbMessages } from "react-icons/tb";
 
 
 const MyInteractionsPage = () => {
-    const [comment, setComment] = useState(0);
+    const [comment, setComment] = useState([]);
     const { data: session } = authClient.useSession();
 
     // useEffect for data loading function
     useEffect(() => {
         const loadingCommentData = async () => {
             const userCommentData = await getCommentData();
-            const commentDataFilter = userCommentData.filter(comment => comment.userEmail === session?.user?.email);
+            const commentDataFilter = userCommentData.filter(commentInfo => commentInfo.userEmail === session?.user?.email);
             setComment(commentDataFilter);
         };
 
@@ -44,18 +44,30 @@ const MyInteractionsPage = () => {
 
                     <div>
                         <h2 className="text-[#6445df] font-semibold text-lg mb-1">Comments: {comment.length || 0}</h2>
-                        <div className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
-                            <div className="space-y-2">
-                                <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">No interactions yet</h3>
-                                <p className="text-sm">Jump into an idea and share your perspective.</p>
-                            </div>
-                            <BaseButton
-                                size="sm"
-                                text={'Browse ideas'}
-                                as="link"
-                                href={'/add-idea'}
-                                className={"rounded-xl bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"} />
+                        <div className="space-y-5">
+                            {
+                                comment.map((comInfo, idx) => comInfo?.userEmail === session?.user?.email
+                                    ?
+                                    <div key={idx} className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
+                                        <h2>Hello</h2>
+                                    </div>
+                                    :
+                                    <div key={idx} className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
+                                        <div className="space-y-2">
+                                            <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">No interactions yet</h3>
+                                            <p className="text-sm">Jump into an idea and share your perspective.</p>
+                                        </div>
+                                        <BaseButton
+                                            size="sm"
+                                            text={'Browse ideas'}
+                                            as="link"
+                                            href={'/add-idea'}
+                                            className={"rounded-xl bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"} />
+                                    </div>)
+                            }
                         </div>
+
+
                     </div>
                 </div>
             </Container>

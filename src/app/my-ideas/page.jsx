@@ -67,7 +67,7 @@ const MyIdeasPage = () => {
 
                                 {/* ==========================================
                                 Idea Content
-                            ========================================== */}
+                                ========================================== */}
                                 <div className="flex flex-col md:flex-row md:items-center gap-5 w-full">
 
                                     {/* Idea Image */}
@@ -126,7 +126,7 @@ const MyIdeasPage = () => {
 
                                 {/* ==========================================
                                 Action Buttons
-                            ========================================== */}
+                                ========================================== */}
                                 <div className="flex items-center gap-3 flex-wrap">
 
                                     <BaseButton
