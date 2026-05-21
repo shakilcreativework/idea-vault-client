@@ -12,7 +12,7 @@ const IdeaCard = ({ ideaInfo }) => {
 
     return (
         <div className="rounded-2xl overflow-hidden border shadow-xs">
-            <div className="relative">
+            <div>
                 <Image
                     width={300}
                     height={290}
@@ -23,7 +23,7 @@ const IdeaCard = ({ ideaInfo }) => {
                 />
                 <SectionBadge icon={<LuTag />} text={category} className={'text-xs font-semibold text-[#091123] absolute top-3 left-3 bg-white py-1 px-3 rounded-full gap-1'} />
             </div>
-            <div className="p-6 bg-white space-y-2">
+            <div className="p-6 bg-white space-y-2 flex flex-col">
                 <h3 className="text-[#091123] text-lg font-bold">{ideaTitle}</h3>
                 <p className="">{shortDescription}</p>
 

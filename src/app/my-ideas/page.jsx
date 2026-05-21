@@ -3,7 +3,7 @@
 import Container from "@/components/shared/Container";
 import SectionParagraph from "@/components/ui/SectionParagraph";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { getUserData } from "@/lib/actions";
+import { getIdeasData, getUserData } from "@/lib/actions";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -20,14 +20,14 @@ const MyIdeasPage = () => {
     const { data: session } = authClient.useSession();
 
     useEffect(() => {
-        const loadData = async () => {
-            const data = await getUserData(session?.user?.email);
-            // console.log(data);
+        const loginUserData = async () => {
+            const userIdeaData = await getIdeasData();
+            const data = userIdeaData.filter(idea => idea?.userEmail === session?.user?.email);
             setIdea(data);
-        };
+        }
 
         if (session?.user?.email) {
-            loadData();
+            loginUserData();
         }
     }, [session]);
 
@@ -53,115 +53,117 @@ const MyIdeasPage = () => {
                         />
                     </div>
                 </div>
-                {
-                    idea.map((ideaInfo, index) => ideaInfo.userEmail === session?.user?.email ?
-                    <div
-                        key={index}
-                        className="
+                <div className="space-y-5">
+                    {
+                        idea.map((ideaInfo, index) => ideaInfo.userEmail === session?.user?.email ?
+                            <div
+                                key={index}
+                                className="
                                 flex flex-col lg:flex-row
                                 lg:items-center lg:justify-between
                                 gap-5 bg-white rounded-2xl border p-4
                             "
-                    >
+                            >
 
-                        {/* ==========================================
+                                {/* ==========================================
                                 Idea Content
                             ========================================== */}
-                        <div className="flex flex-col md:flex-row md:items-center gap-5 w-full">
+                                <div className="flex flex-col md:flex-row md:items-center gap-5 w-full">
 
-                            {/* Idea Image */}
-                            <Image
-                                src={ideaInfo?.imageURL}
-                                alt={ideaInfo?.ideaTitle}
-                                width={500}
-                                height={200}
-                                priority
-                                className="
+                                    {/* Idea Image */}
+                                    <Image
+                                        src={ideaInfo?.imageURL}
+                                        alt={ideaInfo?.ideaTitle}
+                                        width={500}
+                                        height={200}
+                                        priority
+                                        className="
                                         w-full md:w-52
                                         h-52 md:h-32
                                         rounded-2xl object-cover shrink-0
                                     "
-                            />
+                                    />
 
-                            {/* Idea Info */}
-                            <div className="space-y-3 flex-1">
+                                    {/* Idea Info */}
+                                    <div className="space-y-3 flex-1">
 
-                                {/* Category + Time */}
-                                <div className="flex flex-wrap items-center gap-2">
+                                        {/* Category + Time */}
+                                        <div className="flex flex-wrap items-center gap-2">
 
-                                    <span
-                                        className="
+                                            <span
+                                                className="
                                                 inline-flex items-center gap-2
                                                 rounded-full px-3 py-1 text-sm font-medium
                                                 bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]
                                                 text-white
                                             "
-                                    >
-                                        <LuTag />
-                                        {ideaInfo?.category}
-                                    </span>
+                                            >
+                                                <LuTag />
+                                                {ideaInfo?.category}
+                                            </span>
 
-                                    <span className="text-xs text-[#5b6375]">
-                                        {formatDistanceToNow(
-                                            new Date(ideaInfo?.createdAt),
-                                            { addSuffix: true }
-                                        ).replace("about ", "")}
-                                    </span>
+                                            <span className="text-xs text-[#5b6375]">
+                                                {formatDistanceToNow(
+                                                    new Date(ideaInfo?.createdAt),
+                                                    { addSuffix: true }
+                                                ).replace("about ", "")}
+                                            </span>
+                                        </div>
+
+                                        {/* Title + Description */}
+                                        <div className="space-y-1">
+
+                                            <h3 className="text-lg font-bold text-[#091123]">
+                                                {ideaInfo?.ideaTitle}
+                                            </h3>
+
+                                            <p className="text-sm text-[#5b6375] leading-6">
+                                                {ideaInfo?.shortDescription}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                {/* Title + Description */}
-                                <div className="space-y-1">
-
-                                    <h3 className="text-lg font-bold text-[#091123]">
-                                        {ideaInfo?.ideaTitle}
-                                    </h3>
-
-                                    <p className="text-sm text-[#5b6375] leading-6">
-                                        {ideaInfo?.shortDescription}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* ==========================================
+                                {/* ==========================================
                                 Action Buttons
                             ========================================== */}
-                        <div className="flex items-center gap-3 flex-wrap">
+                                <div className="flex items-center gap-3 flex-wrap">
 
-                            <BaseButton
-                                className={"bg-[#D4F4FF] text-[#082047]"}
-                                size="sm"
-                                leftIcon={
-                                    <MdOutlineModeEditOutline className="text-lg" />
-                                }
-                                text={"Edit"}
-                            />
+                                    <BaseButton
+                                        className={"bg-[#D4F4FF] text-[#082047]"}
+                                        size="sm"
+                                        leftIcon={
+                                            <MdOutlineModeEditOutline className="text-lg" />
+                                        }
+                                        text={"Edit"}
+                                    />
 
-                            <BaseButton
-                                className={"bg-[#FFE2E2] text-[#082047]"}
-                                size="sm"
-                                leftIcon={
-                                    <AiOutlineDelete className="text-red-500 text-lg" />
-                                }
-                                text={"Delete"}
-                            />
-                        </div>
+                                    <BaseButton
+                                        className={"bg-[#FFE2E2] text-[#082047]"}
+                                        size="sm"
+                                        leftIcon={
+                                            <AiOutlineDelete className="text-red-500 text-lg" />
+                                        }
+                                        text={"Delete"}
+                                    />
+                                </div>
 
-                    </div>
-                    :
-                    <div key={index} className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
-                        <div>
-                            <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">You haven&apos;t shared an idea yet</h3>
-                            <p className="text-sm">Your first idea is the hardest. Then it gets easy.</p>
-                        </div>
-                        <BaseButton
-                            size="sm"
-                            text={'Share your first idea'}
-                            as="link"
-                            href={'/add-idea'}
-                            className={"rounded-xl bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"} />
-                    </div>)
-                }
+                            </div>
+                            :
+                            <div key={index} className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
+                                <div>
+                                    <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">You haven&apos;t shared an idea yet</h3>
+                                    <p className="text-sm">Your first idea is the hardest. Then it gets easy.</p>
+                                </div>
+                                <BaseButton
+                                    size="sm"
+                                    text={'Share your first idea'}
+                                    as="link"
+                                    href={'/add-idea'}
+                                    className={"rounded-xl bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"} />
+                            </div>)
+                    }
+                </div>
             </Container>
         </div>
     );
