@@ -7,7 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 
 const IdeaCard = ({ ideaInfo }) => {
-    console.log(ideaInfo);
+    // console.log(ideaInfo);
     const { _id, ideaTitle, category, shortDescription, userName, userImage, imageURL } = ideaInfo;
 
     return (

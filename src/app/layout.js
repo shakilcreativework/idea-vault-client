@@ -28,7 +28,9 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col inter bg-[#F8FAFD]">
+      <body className="min-h-full flex flex-col inter bg-[#F8FAFD]"
+      cz-shortcut-listen="true"
+      >
         <Navbar />
         <div className="flex-1">
           {children}
