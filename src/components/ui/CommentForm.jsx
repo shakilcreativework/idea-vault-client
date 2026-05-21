@@ -11,10 +11,12 @@ import {
 
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const CommentForm = ({ ideaId, ideaTitle }) => {
 
   const { data: session } = authClient.useSession();
+  const router = useRouter();
 
   // ==========================================
   // Submit Comment
@@ -53,6 +55,8 @@ const CommentForm = ({ ideaId, ideaTitle }) => {
         toast.success("Comment added!");
 
         e.target.reset();
+        
+        router.refresh();
       }
 
     } catch (error) {

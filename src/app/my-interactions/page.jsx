@@ -48,45 +48,75 @@ const MyInteractionsPage = () => {
                         <h2 className="text-[#6445df] font-semibold text-sm md:text-base lg:text-lg mb-1">Comments: {comment.length || 0}</h2>
                         <div className="space-y-3">
                             {
-                                comment.map((comInfo, idx) => comInfo?.userEmail === session?.user?.email
-                                    ?
-                                    <div key={idx} className="bg-white rounded-2xl border p-5 space-y-4">
-                                        <div className="flex gap-5 items-center">
-                                            {/* User Image */}
-                                            <div className="relative w-16 h-16 rounded-full overflow-hidden">
-                                                <Image
-                                                    width={80}
-                                                    height={80}
-                                                    src={comInfo?.userImage}
-                                                    alt={comInfo?.userName}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-[#091123] plus-jakarta font-semibold text-lg">{comInfo?.ideaTitle}</h3>
-                                                <p className="text-sm">{comInfo?.comment}</p>
-                                                <span className="text-xs text-[#5b6375]">
-                                                    {formatDistanceToNow(
-                                                        new Date(comInfo?.createdAt),
-                                                        { addSuffix: true }
-                                                    ).replace("about ", "")}
-                                                </span>
+                                comment.length > 0 ? (
+
+                                    comment.map((comInfo, idx) => (
+
+                                        <div
+                                            key={idx}
+                                            className="bg-white rounded-2xl border p-5 space-y-4"
+                                        >
+                                            <div className="flex gap-5 items-center">
+
+                                                {/* User Image */}
+                                                <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                                                    <Image
+                                                        width={80}
+                                                        height={80}
+                                                        src={comInfo?.userImage}
+                                                        alt={comInfo?.userName}
+                                                        className="w-full h-full object-cover"
+                                                    />
+                                                </div>
+
+                                                <div>
+                                                    <h3 className="text-[#091123] plus-jakarta font-semibold text-lg">
+                                                        {comInfo?.ideaTitle}
+                                                    </h3>
+
+                                                    <p className="text-sm">
+                                                        {comInfo?.comment}
+                                                    </p>
+
+                                                    <span className="text-xs text-[#5b6375]">
+                                                        {
+                                                            formatDistanceToNow(
+                                                                new Date(comInfo?.createdAt),
+                                                                { addSuffix: true }
+                                                            ).replace("about ", "")
+                                                        }
+                                                    </span>
+                                                </div>
+
                                             </div>
                                         </div>
-                                    </div>
-                                    :
-                                    <div key={idx} className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
+                                    ))
+
+                                ) : (
+
+                                    <div className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
+
                                         <div className="space-y-2">
-                                            <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">No interactions yet</h3>
-                                            <p className="text-sm">Jump into an idea and share your perspective.</p>
+                                            <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">
+                                                No interactions yet
+                                            </h3>
+
+                                            <p className="text-sm">
+                                                Jump into an idea and share your perspective.
+                                            </p>
                                         </div>
+
                                         <BaseButton
                                             size="sm"
                                             text={'Browse ideas'}
                                             as="link"
                                             href={'/add-idea'}
-                                            className={"rounded-xl bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"} />
-                                    </div>)
+                                            className={
+                                                "rounded-xl bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"
+                                            }
+                                        />
+                                    </div>
+                                )
                             }
                         </div>
 

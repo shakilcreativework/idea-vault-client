@@ -1,7 +1,7 @@
 
 import Container from "@/components/shared/Container";
 import Image from "next/image";
-import { getSingleIdeaData } from "@/lib/actions";
+import { getSingleIdeaData, getSpecificCommentData } from "@/lib/actions";
 
 import {
   FaLightbulb,
@@ -16,6 +16,7 @@ import { LuTag } from "react-icons/lu";
 import SectionBadge from "@/components/ui/SectionBadge";
 import { TbMessageDots } from "react-icons/tb";
 import CommentForm from "@/components/ui/CommentForm";
+import { formatDistanceToNow } from "date-fns";
 
 const IdeaDetailPage = async ({ params }) => {
 
@@ -28,6 +29,13 @@ const IdeaDetailPage = async ({ params }) => {
   // Fetch Single Idea Data
   // ==========================================
   const ideaDetail = await getSingleIdeaData(ideaId);
+
+
+  // ==========================================
+  // Fetch Specific Idea Data
+  // ==========================================
+  const commentData = await getSpecificCommentData(ideaId);
+  console.log(commentData);
 
   // ==========================================
   // Destructure Idea Data
@@ -140,6 +148,50 @@ const IdeaDetailPage = async ({ params }) => {
                 <CommentForm ideaId={_id} ideaTitle={ideaTitle} />
               </div>
 
+              {/* add specific idea comments that match idea _id */}
+              {
+                commentData.map((comInfo, idx) => (
+
+                  <div
+                    key={idx}
+                    className="bg-white rounded-2xl border p-5 space-y-4"
+                  >
+                    <div className="flex gap-5 items-center">
+
+                      {/* User Image */}
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                        <Image
+                          width={80}
+                          height={80}
+                          src={comInfo?.userImage}
+                          alt={comInfo?.userName}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      <div>
+                        <h3 className="text-[#091123] plus-jakarta font-semibold text-lg">
+                          {comInfo?.ideaTitle}
+                        </h3>
+
+                        <p className="text-sm">
+                          {comInfo?.comment}
+                        </p>
+
+                        <span className="text-xs text-[#5b6375]">
+                          {
+                            formatDistanceToNow(
+                              new Date(comInfo?.createdAt),
+                              { addSuffix: true }
+                            ).replace("about ", "")
+                          }
+                        </span>
+                      </div>
+
+                    </div>
+                  </div>
+                ))
+              }
             </div>
 
             {/* ==========================================
