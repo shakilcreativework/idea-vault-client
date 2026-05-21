@@ -53,9 +53,10 @@ const MyIdeasPage = () => {
                         />
                     </div>
                 </div>
-                {idea.map((ideaInfo, idx) => (
+                {
+                    idea.map((ideaInfo, index) => ideaInfo.userEmail === session?.user?.email ?
                     <div
-                        key={idx}
+                        key={index}
                         className="
                                 flex flex-col lg:flex-row
                                 lg:items-center lg:justify-between
@@ -147,8 +148,20 @@ const MyIdeasPage = () => {
                         </div>
 
                     </div>
-                ))}
-
+                    :
+                    <div key={index} className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
+                        <div>
+                            <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">You haven&apos;t shared an idea yet</h3>
+                            <p className="text-sm">Your first idea is the hardest. Then it gets easy.</p>
+                        </div>
+                        <BaseButton
+                            size="sm"
+                            text={'Share your first idea'}
+                            as="link"
+                            href={'/add-idea'}
+                            className={"rounded-xl bg-[linear-gradient(135deg,oklch(0.55_0.22_285),oklch(0.62_0.2_305)_55%,oklch(0.78_0.15_215))]"} />
+                    </div>)
+                }
             </Container>
         </div>
     );
