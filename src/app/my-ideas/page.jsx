@@ -151,7 +151,7 @@ const MyIdeasPage = () => {
                             </div>
                             :
                             <div key={index} className="bg-white rounded-2xl border p-5 md:p-8 lg:p-10 space-y-4 text-center">
-                                <div>
+                                <div className="space-y-2">
                                     <h3 className="text-[#091123] lg:text-lg font-semibold plus-jakarta">You haven&apos;t shared an idea yet</h3>
                                     <p className="text-sm">Your first idea is the hardest. Then it gets easy.</p>
                                 </div>
