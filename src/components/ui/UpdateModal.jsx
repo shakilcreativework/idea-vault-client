@@ -36,6 +36,11 @@ export function UpdateModal({ ideaInfo }) {
 
     const ideaData = Object.fromEntries(formData.entries());
 
+    ideaData.tags = ideaData.tags
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(tag => tag !== "");
+
     const res = await fetch(`http://localhost:5000/add-ideas/${_id}`, {
         method: 'PATCH',
         headers: {
@@ -46,10 +51,12 @@ export function UpdateModal({ ideaInfo }) {
 
     const data = await res.json();
 
+    // SUCCESS
     if (data.modifiedCount > 0) {
 
         toast.success("Idea updated successfully");
 
+        // update ui instantly without refresh
         router.refresh();
     }
 };

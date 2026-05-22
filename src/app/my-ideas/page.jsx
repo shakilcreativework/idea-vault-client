@@ -14,6 +14,7 @@ import { MdOutlineModeEditOutline } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 import { UpdateModal } from "@/components/ui/UpdateModal";
+import { DeleteAlert } from "@/components/ui/DeleteAlert";
 
 
 const MyIdeasPage = () => {
@@ -140,14 +141,15 @@ const MyIdeasPage = () => {
                                     /> */}
                                     <UpdateModal ideaInfo={ideaInfo}  />
 
-                                    <BaseButton
+                                    {/* <BaseButton
                                         className={"bg-[#FFE2E2] text-[#082047]"}
                                         size="sm"
                                         leftIcon={
                                             <AiOutlineDelete className="text-red-500 text-lg" />
                                         }
                                         text={"Delete"}
-                                    />
+                                    /> */}
+                                    <DeleteAlert ideaInfo={ideaInfo} />
                                 </div>
 
                                 {/* <div className="flex items-center gap-3 flex-wrap">
