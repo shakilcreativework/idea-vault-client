@@ -24,13 +24,15 @@ export const getPlatform = () => {
 
 // ideas data
 export const getIdeasData = async () => {
-  const res = await fetch("http://localhost:5000/add-ideas");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/add-ideas`, {
+    cache: "no-store",
+  });
   return res.json();
 };
 
 // single idea
 export const getSingleIdeaData = async (id) => {
-  const res = await fetch(`http://localhost:5000/add-ideas/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/add-ideas/${id}`, {
     cache: "no-store",
   });
 
@@ -39,13 +41,15 @@ export const getSingleIdeaData = async (id) => {
 
 // Get comments
 export const getCommentData = async () => {
-  const res = await fetch("http://localhost:5000/comments");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
+      cache: "no-store",
+    });
   return res.json();
 };
 
 // Get specific idea comments
 export const getSpecificCommentData = async (ideaId) => {
-  const res = await fetch(`http://localhost:5000/comments/${ideaId}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${ideaId}`, {
     cache: "no-store",
   });
   return res.json();
@@ -56,7 +60,7 @@ export const getUserData = async (email) => {
   // If no email, return empty array
   if (!email) return [];
 
-  const res = await fetch(`http://localhost:5000/add-ideas?email=${email}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/add-ideas?email=${email}`, {
     cache: "no-store",
   });
 

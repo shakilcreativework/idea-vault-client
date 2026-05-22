@@ -41,7 +41,7 @@ export function UpdateModal({ ideaInfo }) {
         .map(tag => tag.trim())
         .filter(tag => tag !== "");
 
-    const res = await fetch(`http://localhost:5000/add-ideas/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/add-ideas/${_id}`, {
         method: 'PATCH',
         headers: {
             'content-type': 'application/json'

@@ -41,7 +41,7 @@ const CommentForm = ({ ideaId, ideaTitle }) => {
     console.log(commentData);
 
     try {
-      const res = await fetch("http://localhost:5000/comments", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

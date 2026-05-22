@@ -18,6 +18,7 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
+import toast from "react-hot-toast";
 
 import { WiStars } from "react-icons/wi";
 
@@ -36,9 +37,9 @@ const AddIdeaPage = () => {
 
     // Convert tags string to array
     ideaData.tags = ideaData.tags
-    .split(',')
-    .map(tag => tag.trim())
-    .filter(tag => tag !== "");
+      .split(',')
+      .map(tag => tag.trim())
+      .filter(tag => tag !== "");
 
     // idea data with user information
     const addIdeaData = {
@@ -49,7 +50,7 @@ const AddIdeaPage = () => {
     }
     // console.log(addIdeaData);
 
-    const res = await fetch('http://localhost:5000/add-ideas', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/add-ideas`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -59,6 +60,13 @@ const AddIdeaPage = () => {
 
     const data = await res.json();
     console.log('data', data, typeof data);
+
+    if (data.insertedId) {
+
+        toast.success("Idea added successfully");
+
+        router.refresh();
+    }
   };
 
   return (
@@ -105,7 +113,7 @@ const AddIdeaPage = () => {
 
                 <Input
                   placeholder="AI Study Planner for Students"
-                  
+
                 />
 
                 <FieldError />
@@ -179,12 +187,12 @@ const AddIdeaPage = () => {
                 Target Audience
             ========================================== */}
             <div className="md:col-span-2">
-              <TextField  name="targetAudience">
+              <TextField name="targetAudience">
                 <Label>Target Audience</Label>
 
                 <Input
                   placeholder="Students, freelancers, startup founders"
-                  
+
                 />
 
                 <FieldError />
@@ -200,7 +208,7 @@ const AddIdeaPage = () => {
 
                 <Input
                   placeholder="ai, productivity, students"
-                  
+
                 />
 
                 <FieldError />
@@ -211,13 +219,13 @@ const AddIdeaPage = () => {
                 Image URL
             ========================================== */}
             <div className="md:col-span-2">
-              <TextField  name="imageURL">
+              <TextField name="imageURL">
                 <Label>Image URL</Label>
 
                 <Input
                   type="url"
                   placeholder="https://example.com/image.jpg"
-                  
+
                 />
 
                 <FieldError />
@@ -228,12 +236,12 @@ const AddIdeaPage = () => {
                 Short Description
             ========================================== */}
             <div className="md:col-span-2">
-              <TextField  name="shortDescription">
+              <TextField name="shortDescription">
                 <Label>Short Description</Label>
 
                 <TextArea
                   placeholder="Write a short summary about your startup idea..."
-                  
+
                 />
 
                 <FieldError />
@@ -244,12 +252,12 @@ const AddIdeaPage = () => {
                 Detailed Description
             ========================================== */}
             <div className="md:col-span-2">
-              <TextField  name="detailedDescription">
+              <TextField name="detailedDescription">
                 <Label>Detailed Description</Label>
 
                 <TextArea
                   placeholder="Explain your startup idea in detail..."
-                  
+
                 />
 
                 <FieldError />
@@ -260,12 +268,12 @@ const AddIdeaPage = () => {
                 Problem Statement
             ========================================== */}
             <div className="md:col-span-2">
-              <TextField  name="problemStatement">
+              <TextField name="problemStatement">
                 <Label>Problem Statement</Label>
 
                 <TextArea
                   placeholder="What problem are you trying to solve?"
-                  
+
                 />
 
                 <FieldError />
@@ -276,12 +284,12 @@ const AddIdeaPage = () => {
                 Proposed Solution
             ========================================== */}
             <div className="md:col-span-2">
-              <TextField  name="proposedSolution">
+              <TextField name="proposedSolution">
                 <Label>Proposed Solution</Label>
 
                 <TextArea
                   placeholder="Describe your solution..."
-                  
+
                 />
 
                 <FieldError />
