@@ -3,15 +3,13 @@
 import Container from "@/components/shared/Container";
 import SectionParagraph from "@/components/ui/SectionParagraph";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { getIdeasData, getUserData } from "@/lib/actions";
+import { getIdeasData } from "@/lib/actions";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { LuTag } from "react-icons/lu";
 import { formatDistanceToNow } from "date-fns";
 import BaseButton from "@/components/ui/BaseButton";
-import { MdOutlineModeEditOutline } from "react-icons/md";
-import { AiOutlineDelete } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 import { UpdateModal } from "@/components/ui/UpdateModal";
 import { DeleteAlert } from "@/components/ui/DeleteAlert";

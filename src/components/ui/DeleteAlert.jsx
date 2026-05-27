@@ -27,7 +27,7 @@ export function DeleteAlert({ideaInfo}) {
     const data = await res.json();
     // console.log(data);
 
-    if(data.deletedCount){
+    if(data?.deletedCount){
       toast.success(`${ideaTitle} succesfully delete!`)
 
       router.refresh();

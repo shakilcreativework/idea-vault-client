@@ -52,7 +52,7 @@ export function UpdateModal({ ideaInfo }) {
     const data = await res.json();
 
     // SUCCESS
-    if (data.modifiedCount > 0) {
+    if (data?.modifiedCount > 0) {
 
         toast.success("Idea updated successfully");
 

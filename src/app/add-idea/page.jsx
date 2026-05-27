@@ -18,11 +18,13 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 import { WiStars } from "react-icons/wi";
 
 const AddIdeaPage = () => {
+  const router = useRouter();
   const { data: session, error } = authClient.useSession();
   // console.log(session?.user?.email);
 
@@ -61,11 +63,13 @@ const AddIdeaPage = () => {
     const data = await res.json();
     console.log('data', data, typeof data);
 
-    if (data.insertedId) {
+    if (data?.insertedId) {
 
-        toast.success("Idea added successfully");
+      toast.success("Idea added successfully");
 
-        router.refresh();
+      e.target.reset();
+
+      router.refresh();
     }
   };
 
